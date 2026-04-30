@@ -1,0 +1,22 @@
+/bitrix/
+
+/upload/
+
+/.htaccess
+/web.config
+/.settings.php
+
+*.log
+*.tmp
+*.bak
+*.old
+.DS_Store
+Thumbs.db
+
+# IDE
+/.idea/
+/.vscode/
+/.vs/
+
+/vendor/
+/node_modules/
