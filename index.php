@@ -3,7 +3,6 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Главная");
 ?>
 
-<!-- Подключаем блоки через компонент "Включаемая область" -->
 <?$APPLICATION->IncludeComponent(
     "bitrix:main.include",
     "",

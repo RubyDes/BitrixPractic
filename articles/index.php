@@ -4,7 +4,6 @@ $APPLICATION->SetTitle("Статьи");
 $APPLICATION->SetPageProperty("page_text_under_title", "Погрузитесь в инновации и передовые идеи с нашими статьями.");
 ?>
 
-		<!-- Page Title -->
 		<div class="page-title dark-background">
 			<div class="container position-relative">
 				<h1>Статьи</h1>
@@ -16,11 +15,8 @@ $APPLICATION->SetPageProperty("page_text_under_title", "Погрузитесь �
 					</ol>
 				</nav>
 			</div>
-		</div><!-- End Page Title -->
+		</div>
 
-
-
-		<!-- Blog Posts Section -->
 		<section id="blog-posts" class="blog-posts section">
 
 			<div class="container">
@@ -44,7 +40,7 @@ $APPLICATION->SetPageProperty("page_text_under_title", "Погрузитесь �
 								</div>
 							</div>
 						</article>
-					</div><!-- End post list item -->
+					</div>
 
 					<div class="col-lg-4">
 						<article>
@@ -64,7 +60,7 @@ $APPLICATION->SetPageProperty("page_text_under_title", "Погрузитесь �
 								</div>
 							</div>
 						</article>
-					</div><!-- End post list item -->
+					</div>
 
 					<div class="col-lg-4">
 						<article>
@@ -84,7 +80,7 @@ $APPLICATION->SetPageProperty("page_text_under_title", "Погрузитесь �
 								</div>
 							</div>
 						</article>
-					</div><!-- End post list item -->
+					</div>
 
 					<div class="col-lg-4">
 						<article>
@@ -104,7 +100,7 @@ $APPLICATION->SetPageProperty("page_text_under_title", "Погрузитесь �
 								</div>
 							</div>
 						</article>
-					</div><!-- End post list item -->
+					</div>
 
 					<div class="col-lg-4">
 						<article>
@@ -124,7 +120,7 @@ $APPLICATION->SetPageProperty("page_text_under_title", "Погрузитесь �
 								</div>
 							</div>
 						</article>
-					</div><!-- End post list item -->
+					</div>
 
 					<div class="col-lg-4">
 						<article>
@@ -144,14 +140,13 @@ $APPLICATION->SetPageProperty("page_text_under_title", "Погрузитесь �
 								</div>
 							</div>
 						</article>
-					</div><!-- End post list item -->
+					</div>
 
 				</div>
 			</div>
 
-		</section><!-- /Blog Posts Section -->
+		</section>
 
-		<!-- Blog Pagination Section -->
 		<section id="blog-pagination" class="blog-pagination section">
 
 			<div class="container">
@@ -169,6 +164,6 @@ $APPLICATION->SetPageProperty("page_text_under_title", "Погрузитесь �
 				</div>
 			</div>
 
-		</section><!-- /Blog Pagination Section -->
+		</section>
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

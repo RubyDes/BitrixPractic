@@ -43,7 +43,6 @@ $APPLICATION->SetPageProperty("page_text_under_title", "Работайте с н
 
 			<div class="col-lg-8 ps-lg-5">
 
-				<!-- Content Page Title -->
 				<div class="page-content-title">
 					<div class="position-relative">
 						<h1>Преимущества</h1>
@@ -57,9 +56,6 @@ $APPLICATION->SetPageProperty("page_text_under_title", "Работайте с н
 						</nav>
 					</div>
 				</div>
-				<!-- End Content Page Title -->
-
-				<!-- CONTENT -->
 
 
 				<p>Работая в нашей компании, вы получаете уникальные возможности для профессионального и личностного
@@ -95,13 +91,12 @@ $APPLICATION->SetPageProperty("page_text_under_title", "Работайте с н
 
 
 
-				<!-- END CONTENT -->
 
 			</div>
 
 		</div>
 
 	</div>
-</section><!-- End Conten Page Section -->
+</section>
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

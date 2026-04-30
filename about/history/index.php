@@ -8,7 +8,6 @@ $APPLICATION->SetPageProperty("page_text_under_title", "Наш путь к ус�
     <div class="container">
         <div class="row gy-5">
 
-            <!-- ЛЕВАЯ КОЛОНКА -->
             <div class="col-lg-4">
                 <div class="service-box">
                     <div class="services-list">
@@ -35,7 +34,6 @@ $APPLICATION->SetPageProperty("page_text_under_title", "Наш путь к ус�
                 </div>
             </div>
 
-            <!-- ПРАВАЯ КОЛОНКА -->
             <div class="col-lg-8 ps-lg-5">
 
                 <div class="page-content-title">
@@ -43,7 +41,6 @@ $APPLICATION->SetPageProperty("page_text_under_title", "Наш путь к ус�
                         <h1><?$APPLICATION->ShowTitle(false);?></h1>
                         <p><?$APPLICATION->ShowProperty("page_text_under_title");?></p>
 
-                        <!-- КОМПОНЕНТ (НЕ СТАТИКА!) -->
                         <?$APPLICATION->IncludeComponent(
                             "bitrix:breadcrumb",
                             ".default",
@@ -57,7 +54,6 @@ $APPLICATION->SetPageProperty("page_text_under_title", "Наш путь к ус�
                     </div>
                 </div>
 
-                <!-- КОНТЕНТ -->
                 <img src="<?=DEFAULT_TEMPLATE_PATH?>/assets/img/content/history_1.jpg" alt="" class="img-fluid services-img">
                 <h2>Наше начало</h2>
                 <p>История нашей компании началась...</p>
