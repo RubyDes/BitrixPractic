@@ -1,7 +1,19 @@
-/bitrix/
-
-/upload/
-
+/bitrix/cache/
+/bitrix/managed_cache/
+/bitrix/stack_cache/
+/bitrix/html_pages/
+/bitrix/tmp/
+/bitrix/backup/
+/bitrix/sessions/
+/bitrix/modules/statistic/
+/bitrix/statistic/
+/upload/resize_cache/
+/upload/tmp/
+/upload/statistic/
+/bitrix/.settings.php
+/bitrix/php_interface/dbconn.php
+/bitrix/php_interface/after_connect.php
+/bitrix/php_interface/after_connect_d7.php
 /.htaccess
 /web.config
 /.settings.php
@@ -13,7 +25,6 @@
 .DS_Store
 Thumbs.db
 
-# IDE
 /.idea/
 /.vscode/
 /.vs/
