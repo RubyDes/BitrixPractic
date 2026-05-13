@@ -1,47 +1,34 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Портфолио");
+$APPLICATION->SetPageProperty("page_text_under_title", "Ознакомьтесь с нашими успешными проектами и реализованными решениями.");
+
 ?>
 
-<?if(!$_REQUEST["ELEMENT_ID"] && !$_REQUEST["SECTION_ID"]):?>
-    <?$APPLICATION->IncludeComponent(
-        "bitrix:catalog.section.list",
-        "portfolio_sections",
-        Array(
-            "IBLOCK_ID" => "10",
-            "SECTION_ID" => "0",
-            "TOP_DEPTH" => "2",
-            "CACHE_TYPE" => "A",
-            "CACHE_TIME" => "3600",
+<?$APPLICATION->IncludeComponent(
+    "bitrix:catalog",
+    "portfolio",
+    Array(
+        "IBLOCK_TYPE" => "content",
+        "IBLOCK_ID" => "13",
+        "CACHE_TYPE" => "A",
+        "CACHE_TIME" => "36000000",
+        "SEF_MODE" => "Y",
+        "SEF_FOLDER" => "/portfolio/",
+        "SET_TITLE" => "Y",
+        "SET_BROWSER_TITLE" => "Y",
+        "SET_META_DESCRIPTION" => "Y",
+        "SEF_URL_TEMPLATES" => Array(
+            "sections" => "",
+            "section" => "#SECTION_ID#/",
+            "element" => "#SECTION_ID#/#ELEMENT_ID#/",
+        ),
+        "VARIABLE_ALIASES" => Array(
+            "sections" => Array(),
+            "section" => Array("SECTION_ID" => "SECTION_ID"),
+            "element" => Array("ELEMENT_ID" => "ELEMENT_ID", "SECTION_ID" => "SECTION_ID"),
         )
-    );?>
-<?endif;?>
-
-<?if($_REQUEST["SECTION_ID"] && !$_REQUEST["ELEMENT_ID"]):?>
-    <?$APPLICATION->IncludeComponent(
-        "bitrix:catalog.section",
-        "portfolio_list",
-        Array(
-            "IBLOCK_ID" => "10",
-            "SECTION_ID" => intval($_REQUEST["SECTION_ID"]),
-            "PAGE_ELEMENT_COUNT" => "10",
-            "CACHE_TYPE" => "A",
-            "CACHE_TIME" => "3600",
-        )
-    );?>
-<?endif;?>
-
-<?if($_REQUEST["ELEMENT_ID"]):?>
-    <?$APPLICATION->IncludeComponent(
-        "bitrix:catalog.element",
-        "portfolio_detail",
-        Array(
-            "IBLOCK_ID" => "10",
-            "ELEMENT_ID" => intval($_REQUEST["ELEMENT_ID"]),
-            "CACHE_TYPE" => "A",
-            "CACHE_TIME" => "3600",
-        )
-    );?>
-<?endif;?>
+    )
+);?>
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

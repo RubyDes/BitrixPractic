@@ -1,6 +1,8 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Title");
+$APPLICATION->SetPageProperty("keywords", "Проминжиниринг, Инженерные услуги");
+$APPLICATION->SetPageProperty("description", "Добро пожаловать на сайт компании, лидера в области проминжиниринга");
+$APPLICATION->SetTitle("О компании");
 ?>Я редактирую страницу. Я могу управлять контентом
 <div id="simple-translate" class="simple-translate-system-theme">
 	<div>

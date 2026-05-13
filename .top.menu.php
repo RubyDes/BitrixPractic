@@ -42,12 +42,12 @@ $aMenuLinks = Array(
 		Array(), 
 		"" 
 	),
-	Array(
-		"Статистика", 
-		"/statistic_na/", 
-		Array(), 
-		Array(), 
-		""
-	),
+	// Array(
+	// 	"Статистика", 
+	// 	"statistic_na/", 
+	// 	Array(), 
+	// 	Array(), 
+	// 	"" 
+	// )
 );
 ?>

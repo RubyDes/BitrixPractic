@@ -1,4 +1,7 @@
 <?
+$PERM["services"]["5"]="W";
+$PERM["contacts"]["5"]="W";
+$PERM["about"]["6"]="W";
 $PERM["statistic_na"]["2"]="D";
 $PERM["statistic_na"]["3"]="D";
 $PERM["statistic_na"]["4"]="D";
@@ -8,9 +11,6 @@ $PERM["statistic_na"]["5"]="D";
 $PERM["statistic_na"]["*"]="D";
 $PERM["/"]["*"]="R";
 $PERM["bitrix"]["6"]="R";
-$PERM["about"]["6"]="W";
 $PERM["search"]["5"]="W";
-$PERM["services"]["5"]="W";
-$PERM["contacts"]["5"]="W";
 $PERM["index.php"]["5"]="W";
 ?>

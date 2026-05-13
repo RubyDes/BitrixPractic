@@ -1,17 +1,7 @@
-<?php
-define("BX_NO_HEADER", true);
-define("BX_SKIP_SESSION_EXPAND", true);
-define("NO_KEEP_STATISTIC", true);
-define("NOT_CHECK_PERMISSIONS", true);
-define("BX_NO_ACCELERATOR_RESET", true);
-
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
-
-global $APPLICATION;
-$APPLICATION->SetPageProperty("page_css_class", "dashboard");
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Дашборд");
-
-require($_SERVER["DOCUMENT_ROOT"]."/local/templates/exam1_type2/header.php");
+$templateFolder = "/local/templates/exam1_type2";
+$APPLICATION->SetPageProperty("page_css_class", "dashboard");
 ?>
 
 <div class="pagetitle mb-4">
@@ -20,8 +10,10 @@ require($_SERVER["DOCUMENT_ROOT"]."/local/templates/exam1_type2/header.php");
 
 <section class="section dashboard">
     <div class="row">
+
         <div class="col-lg-8">
             <div class="row">
+
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
                         <div class="card-body">
@@ -94,35 +86,35 @@ require($_SERVER["DOCUMENT_ROOT"]."/local/templates/exam1_type2/header.php");
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row"><a href="#"><img src="/local/templates/exam1_type2/assets/img/product-1.jpg" alt=""></a></th>
+                                        <th scope="row"><a href="#"><img src="<?=$templateFolder?>/assets/img/product-1.jpg" alt=""></a></th>
                                         <td><a href="#" class="text-primary fw-bold">Ноутбук Dell XPS</a></td>
                                         <td>50 000</td>
                                         <td class="fw-bold">120</td>
                                         <td>6 000 000</td>
-                                    </tr> 
+                                    </tr>
                                     <tr>
-                                        <th scope="row"><a href="#"><img src="/local/templates/exam1_type2/assets/img/product-2.jpg" alt=""></a></th>
+                                        <th scope="row"><a href="#"><img src="<?=$templateFolder?>/assets/img/product-2.jpg" alt=""></a></th>
                                         <td><a href="#" class="text-primary fw-bold">Смартфон Samsung Galaxy</a></td>
                                         <td>30 000</td>
                                         <td class="fw-bold">150</td>
                                         <td>4 500 000</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row"><a href="#"><img src="/local/templates/exam1_type2/assets/img/product-3.jpg" alt=""></a></th>
+                                        <th scope="row"><a href="#"><img src="<?=$templateFolder?>/assets/img/product-3.jpg" alt=""></a></th>
                                         <td><a href="#" class="text-primary fw-bold">Телевизор LG OLED</a></td>
                                         <td>40 000</td>
                                         <td class="fw-bold">100</td>
                                         <td>4 000 000</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row"><a href="#"><img src="/local/templates/exam1_type2/assets/img/product-4.jpg" alt=""></a></th>
+                                        <th scope="row"><a href="#"><img src="<?=$templateFolder?>/assets/img/product-4.jpg" alt=""></a></th>
                                         <td><a href="#" class="text-primary fw-bold">Кофеварка De'Longhi</a></td>
                                         <td>7 000</td>
                                         <td class="fw-bold">300</td>
                                         <td>2 100 000</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row"><a href="#"><img src="/local/templates/exam1_type2/assets/img/product-5.jpg" alt=""></a></th>
+                                        <th scope="row"><a href="#"><img src="<?=$templateFolder?>/assets/img/product-5.jpg" alt=""></a></th>
                                         <td><a href="#" class="text-primary fw-bold">Наушники Sony</a></td>
                                         <td>5 000</td>
                                         <td class="fw-bold">400</td>
@@ -133,6 +125,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/local/templates/exam1_type2/header.php");
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
@@ -143,58 +136,59 @@ require($_SERVER["DOCUMENT_ROOT"]."/local/templates/exam1_type2/header.php");
                     <div class="activity">
                         <div class="activity-item d-flex">
                             <div class="activite-label">5 мин</div>
-                            <i class="bi bi-circle-fill activity-badge text-danger align-self-start"></i>
+                            <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
                             <div class="activity-content">Заказ передан в доставку</div>
                         </div>
                         <div class="activity-item d-flex">
                             <div class="activite-label">10 мин</div>
-                            <i class="bi bi-circle-fill activity-badge text-danger align-self-start"></i>
+                            <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
                             <div class="activity-content">Заказ подтвержден</div>
                         </div>
                         <div class="activity-item d-flex">
                             <div class="activite-label">15 мин</div>
-                            <i class="bi bi-circle-fill activity-badge text-info align-self-start"></i>
+                            <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
                             <div class="activity-content">Заказ оплачен</div>
                         </div>
                         <div class="activity-item d-flex">
                             <div class="activite-label">20 мин</div>
-                            <i class="bi bi-circle-fill activity-badge text-warning align-self-start"></i>
+                            <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
                             <div class="activity-content">Оформлен заказ</div>
                         </div>
                         <div class="activity-item d-flex">
                             <div class="activite-label">25 мин</div>
-                            <i class="bi bi-circle-fill activity-badge text-muted align-self-start"></i>
+                            <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
                             <div class="activity-content">Пользователь добавил товар в корзину</div>
                         </div>
                         <div class="activity-item d-flex">
                             <div class="activite-label">31 мин</div>
-                            <i class="bi bi-circle-fill activity-badge text-warning align-self-start"></i>
+                            <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
                             <div class="activity-content">Пользователь зарегистрировался</div>
                         </div>
                         <div class="activity-item d-flex">
                             <div class="activite-label">49 мин</div>
-                            <i class="bi bi-circle-fill activity-badge text-info align-self-start"></i>
+                            <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
                             <div class="activity-content">Пользователь оставил отзыв о товаре</div>
                         </div>
                         <div class="activity-item d-flex">
                             <div class="activite-label">52 мин</div>
-                            <i class="bi bi-circle-fill activity-badge text-warning align-self-start"></i>
+                            <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
                             <div class="activity-content">Пользователь подписался на рассылку</div>
                         </div>
                         <div class="activity-item d-flex">
                             <div class="activite-label">55 мин</div>
-                            <i class="bi bi-circle-fill activity-badge text-muted align-self-start"></i>
+                            <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
                             <div class="activity-content">Пользователь просмотрел страницу товара</div>
                         </div>
                         <div class="activity-item d-flex">
                             <div class="activite-label">59 мин</div>
-                            <i class="bi bi-circle-fill activity-badge text-danger align-self-start"></i>
+                            <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
                             <div class="activity-content">Пользователь создал аккаунт</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
     <div class="row">
@@ -204,27 +198,27 @@ require($_SERVER["DOCUMENT_ROOT"]."/local/templates/exam1_type2/header.php");
                     <h5 class="card-title">Новости</h5>
                     <div class="news">
                         <div class="post-item clearfix">
-                            <img src="/local/templates/exam1_type2/assets/img/news-1.jpg" alt="">
+                            <img src="<?=$templateFolder?>/assets/img/news-1.jpg" alt="">
                             <h4><a href="#">Большая распродажа выходного дня!</a></h4>
                             <p>Скидки до 50% на все категории товаров. Успейте купить по выгодным ценам!...</p>
                         </div>
                         <div class="post-item clearfix">
-                            <img src="/local/templates/exam1_type2/assets/img/news-2.jpg" alt="">
+                            <img src="<?=$templateFolder?>/assets/img/news-2.jpg" alt="">
                             <h4><a href="#">Новая коллекция осень-зима</a></h4>
                             <p>Откройте для себя стильные новинки сезона. Будьте в тренде!...</p>
                         </div>
                         <div class="post-item clearfix">
-                            <img src="/local/templates/exam1_type2/assets/img/news-3.jpg" alt="">
+                            <img src="<?=$templateFolder?>/assets/img/news-3.jpg" alt="">
                             <h4><a href="#">Бесплатная доставка на все заказы</a></h4>
                             <p>Только до конца недели! Не упустите шанс сэкономить на доставке...</p>
                         </div>
                         <div class="post-item clearfix">
-                            <img src="/local/templates/exam1_type2/assets/img/news-4.jpg" alt="">
+                            <img src="<?=$templateFolder?>/assets/img/news-4.jpg" alt="">
                             <h4><a href="#">Эксклюзивные предложения для подписчиков</a></h4>
                             <p>Подпишитесь на рассылку и получайте специальные скидки и акции....</p>
                         </div>
                         <div class="post-item clearfix">
-                            <img src="/local/templates/exam1_type2/assets/img/news-5.jpg" alt="">
+                            <img src="<?=$templateFolder?>/assets/img/news-5.jpg" alt="">
                             <h4><a href="#">Конкурс: выиграй сертификат на 5000 руб.</a></h4>
                             <p>Участвуйте и получите шанс на покупку мечты в нашем магазине!...</p>
                         </div>
@@ -232,9 +226,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/local/templates/exam1_type2/header.php");
                 </div>
             </div>
         </div>
-    </div>      
+    </div>
 </section>
 
-<?php
-require($_SERVER["DOCUMENT_ROOT"]."/local/templates/exam1_type2/footer.php");
-?>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

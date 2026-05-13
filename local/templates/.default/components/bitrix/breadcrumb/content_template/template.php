@@ -1,19 +1,24 @@
- <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
+<?php
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
-<nav class="breadcrumbs">
-    <ol>
-        <?php
-        $itemsCount = count($arResult);
-        if ($itemsCount > 0):
-            for ($i = 0; $i < $itemsCount - 1; $i++):
-                $item = $arResult[$i];
-                ?>
-                <li>
-                    <a href="<?=$item["LINK"]?>"><?=$item["TITLE"]?></a>
-                </li>
-                <?php
-            endfor;
-        endif;
-        ?>
-    </ol>
-</nav>
+if(empty($arResult)) return "";
+
+$strReturn = '<ol class="breadcrumb">';
+$itemSize = count($arResult) - 1; 
+
+for($index = 0; $index < $itemSize; $index++) {
+    $title = htmlspecialcharsEx($arResult[$index]["TITLE"]);
+    $link = $arResult[$index]["LINK"];
+
+    $separator = ($index > 0) ? '&nbsp;/&nbsp;' : '';
+
+    if(!empty($link)) {
+        $strReturn .= '<li>' . $separator . '<a href="' . $link . '" title="' . $title . '">' . $title . '</a></li>';
+    } 
+    else {
+        $strReturn .= '<li>' . $separator . $title . '</li>';
+    }
+}
+
+$strReturn .= '</ol>';
+return $strReturn;

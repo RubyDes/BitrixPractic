@@ -1,10 +1,7 @@
 <?
-$arTemplate = array (
-  'NAME' => 'Экзамен N1 - TYPE1 - content',
-  'DESCRIPTION' => 'Для раздела /about/,
-всех вложенных
-разделов.',
-  'SORT' => '',
-  'TYPE' => '',
+$arTemplate = array(
+    "NAME" => "Экзамен N1 - TYPE1 - content",
+    "DESCRIPTION" => "Шаблон для контентных страниц с двумя колонками",
+    "SORT" => 100,
 );
 ?>

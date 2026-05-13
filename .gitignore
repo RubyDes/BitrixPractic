@@ -2,8 +2,8 @@
 /bitrix/managed_cache/
 /bitrix/stack_cache/
 /bitrix/html_pages/
-/bitrix/tmp/
 /bitrix/backup/
+/bitrix/tmp/
 /bitrix/sessions/
 /bitrix/modules/statistic/
 /bitrix/statistic/

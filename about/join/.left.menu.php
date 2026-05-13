@@ -2,21 +2,21 @@
 $aMenuLinks = Array(
 	Array(
 		"Карьера", 
-		"/join/careers/", 
+		"careers/", 
 		Array(), 
 		Array(), 
 		"" 
 	),
 	Array(
 		"Преимущества", 
-		"/join/benefits/", 
+		"benefits/", 
 		Array(), 
 		Array(), 
 		"" 
 	),
 	Array(
 		"Вакансии", 
-		"/join/vacancies/", 
+		"vacancies/", 
 		Array(), 
 		Array(), 
 		"" 

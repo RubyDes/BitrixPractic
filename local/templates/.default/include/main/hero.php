@@ -1,3 +1,6 @@
+<?
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+?>
 <section id="hero" class="hero section dark-background">
     <div id="hero-carousel" class="carousel carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
         <div class="container position-relative">

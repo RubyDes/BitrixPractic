@@ -1,4 +1,12 @@
-    </div>
-</div>
+<?
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+?>
 
-<?php require_once $_SERVER["DOCUMENT_ROOT"] . "/local/templates/.default/include/footer.php"; ?>
+            </div>
+        </div>
+    </div>
+</section>
+
+<?
+require_once $_SERVER["DOCUMENT_ROOT"] . "/local/templates/.default/include/footer.php";
+?>

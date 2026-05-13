@@ -1231,9 +1231,3 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
-.dropdown-menu {
-    display: none;
-}
-.dropdown-menu.show {
-    display: block !important;
-}

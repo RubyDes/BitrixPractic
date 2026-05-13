@@ -1,7 +1,6 @@
 <?
-$MESS["PROJECT"] = "Проект";
-$MESS["SERVICES"] = "Услуги";
-$MESS["INDUSTRY"] = "Отрасль";
-$MESS["COMPANY"] = "Компания";
-$MESS["BACK_TO_LIST"] = "В список";
+$MESS["EX_PROJECT"] = "Проект";
+$MESS["EX_SERVICES"] = "Услуги";
+$MESS["EX_INDUSTRY"] = "Отрасль";
+$MESS["EX_COMPANY"] = "Компания";
 ?>

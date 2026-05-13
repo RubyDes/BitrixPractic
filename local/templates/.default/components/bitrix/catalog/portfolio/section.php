@@ -1,25 +1,25 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
-if($arResult["VARIABLES"]["SECTION_ID"])
-{
-    CModule::IncludeModule("iblock");
-    $rsSection = CIBlockSection::GetByID($arResult["VARIABLES"]["SECTION_ID"]);
-    if($arSection = $rsSection->GetNext())
-    {
-        $APPLICATION->SetTitle($arSection["NAME"]);
-    }
-}
-?>
+/** @var array $arParams */
+/** @var array $arResult */
+/** @global CMain $APPLICATION */
+/** @var CBitrixComponent $component */
 
-<?$APPLICATION->IncludeComponent(
+$APPLICATION->IncludeComponent(
     "bitrix:catalog.section",
-    "portfolio_list",
+    "portfolio_section",
     Array(
+        "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
         "IBLOCK_ID" => $arParams["IBLOCK_ID"],
         "SECTION_ID" => $arResult["VARIABLES"]["SECTION_ID"],
-        "PAGE_ELEMENT_COUNT" => "10",
-        "CACHE_TYPE" => "A",
-        "CACHE_TIME" => "3600",
-        "DETAIL_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["element"],
-    )
-);?>
+        "CACHE_TYPE" => $arParams["CACHE_TYPE"],
+        "CACHE_TIME" => $arParams["CACHE_TIME"],
+        "SET_TITLE" => "Y",
+        "SET_BROWSER_TITLE" => "Y",
+        "SET_META_DESCRIPTION" => "Y",
+        "SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
+        "DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["element"],
+    ),
+    $component,
+);
+?>

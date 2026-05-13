@@ -2902,224 +2902,136 @@ section,
 .section div.search-widget {
 	margin-bottom: 60px;
 }
-/* ========================================
-   СТИЛИ ДЛЯ HORIZONTAL_MULTILEVEL (с !important)
-   ======================================== */
 
-/* Основной контейнер */
-#horizontal-multilevel-menu {
-    display: flex !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
+/* ==========================================================================
+   ПОЛНОЕ ОБНУЛЕНИЕ СТИЛЕЙ HORIZONTAL_MULTILEVEL
+   ========================================================================== */
+
+/* 1. Жесткий сброс всех дефолтных стилей Битрикс внутри навигации */
+#navmenu .horizontal-multilevel,
+#navmenu .horizontal-multilevel *,
+#navmenu ul, 
+#navmenu li, 
+#navmenu a {
+    all: unset !important;
+    box-sizing: border-box !important;
 }
 
-/* Пункты первого уровня */
-#horizontal-multilevel-menu > li {
-    position: relative !important;
-    list-style: none !important;
-}
-
-/* Ссылки первого уровня */
-#horizontal-multilevel-menu > li > a {
-    display: flex !important;
-    align-items: center !important;
-    gap: 5px !important;
-    padding: 18px 15px !important;
-    color: #ffffff !important;
-    font-size: 16px !important;
-    font-family: "Poppins", sans-serif !important;
-    font-weight: 400 !important;
-    text-decoration: none !important;
-    transition: 0.3s !important;
-}
-
-#horizontal-multilevel-menu > li > a:hover {
-    color: #68a4c4 !important;
-}
-
-#horizontal-multilevel-menu .root-item-selected {
-    color: #68a4c4 !important;
-}
-
-/* Выпадающие списки (второй уровень) */
-#horizontal-multilevel-menu ul {
-    position: absolute !important;
-    top: 100% !important;
-    left: 0 !important;
-    min-width: 220px !important;
-    background: #ffffff !important;
-    border-radius: 4px !important;
-    padding: 10px 0 !important;
-    margin: 0 !important;
-    list-style: none !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-    transition: 0.3s !important;
-    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1) !important;
-    z-index: 100 !important;
-}
-
-#horizontal-multilevel-menu > li:hover > ul {
-    opacity: 1 !important;
-    visibility: visible !important;
-    top: 100% !important;
-}
-
-/* Пункты выпадающего списка */
-#horizontal-multilevel-menu ul li {
-    position: relative !important;
+/* 2. Базовое позиционирование главного контейнера меню */
+#navmenu .horizontal-multilevel {
+    display: block !important;
     width: 100% !important;
 }
 
-#horizontal-multilevel-menu ul li a {
-    display: block !important;
-    padding: 10px 20px !important;
-    color: #555555 !important;
-    font-size: 15px !important;
-    text-decoration: none !important;
-    transition: 0.3s !important;
-}
-
-#horizontal-multilevel-menu ul li a:hover {
-    background: #f5f5f5 !important;
-    color: #68a4c4 !important;
-}
-
-/* Третий уровень */
-#horizontal-multilevel-menu ul ul {
-    top: 0 !important;
-    left: 100% !important;
-    margin-left: 5px !important;
-}
-
-#horizontal-multilevel-menu ul li:hover > ul {
-    opacity: 1 !important;
-    visibility: visible !important;
-    top: 0 !important;
-    left: 100% !important;
-}
-/* Переопределение стандартного красного фона */
-#horizontal-multilevel-menu > li > a {
-    background-color: transparent !important;
-}
-
-#horizontal-multilevel-menu > li > a:hover,
-#horizontal-multilevel-menu > li > a:focus {
-    background-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-/* Если есть активный пункт с красным */
-#horizontal-multilevel-menu .root-item-selected {
-    background-color: transparent !important;
-}
-
-#horizontal-multilevel-menu .root-item-selected:hover {
-    background-color: rgba(255, 255, 255, 0.1) !important;
-}
-/* Убираем фон у всего меню и при наведении */
-#horizontal-multilevel-menu,
-#horizontal-multilevel-menu *,
-#horizontal-multilevel-menu li,
-#horizontal-multilevel-menu a,
-#horizontal-multilevel-menu a:hover,
-#horizontal-multilevel-menu a:focus,
-#horizontal-multilevel-menu .root-item,
-#horizontal-multilevel-menu .root-item:hover,
-#horizontal-multilevel-menu .root-item-selected {
-    background: transparent !important;
-    background-color: transparent !important;
-}
-
-/* Белый фон ТОЛЬКО для выпадающих списков */
-#horizontal-multilevel-menu ul,
-#horizontal-multilevel-menu ul li {
-    background: #ffffff !important;
-    background-color: #ffffff !important;
-}
-
-/* Ссылки внутри выпадающего списка — без фона (до ховера) */
-#horizontal-multilevel-menu ul li a {
-    background: transparent !important;
-    background-color: transparent !important;
-}
-
-/* Ховер для ссылок внутри выпадающего списка — только серый фон */
-#horizontal-multilevel-menu ul li a:hover {
-    background: #f5f5f5 !important;
-    background-color: #f5f5f5 !important;
-}
-
-/* Убираем фон у стрелок и иконок */
-#horizontal-multilevel-menu i,
-#horizontal-multilevel-menu .toggle-dropdown {
-    background: transparent !important;
-}
-/* Стрелка вниз для пунктов с подменю */
-#horizontal-multilevel-menu > li:has(ul) > a::after,
-#horizontal-multilevel-menu .dropdown > a::after {
-    content: "⌵";
-    font-size: 14px;
-    font-weight: 300;
-    margin-left: 6px;
-    display: inline-block;
-    transition: transform 0.3s;
-}
-
-/* Стрелка вправо для подпунктов с подменю */
-#horizontal-multilevel-menu ul li:has(ul) > a::after,
-#horizontal-multilevel-menu ul .dropdown > a::after {
-    content: "⌵";
-    font-size: 16px;
-    font-weight: 300;
-    float: right;
-    margin-left: 10px;
-}
-/* Убираем hover-фон у всех вкладок, включая те, у которых есть выпадающий список */
-#horizontal-multilevel-menu > li > a:hover,
-#horizontal-multilevel-menu > li:hover > a,
-#horizontal-multilevel-menu .dropdown > a:hover,
-#horizontal-multilevel-menu .dropdown:hover > a {
-    background: transparent !important;
-    background-color: transparent !important;
-}
-
-/* Убираем фон при наведении на активные пункты */
-#horizontal-multilevel-menu .root-item-selected:hover {
-    background: transparent !important;
-}
-/* Стрелка вниз — вертикальное выравнивание по центру */
-#horizontal-multilevel-menu .dropdown > a::after {
-    content: "▾";
-    font-size: 12px;
-    font-weight: normal;
-    margin-left: 5px;
-    display: inline-block;
-    vertical-align: middle;
-    line-height: 1;
-}
-
-/* Для ссылок — выравнивание содержимого по центру */
-#horizontal-multilevel-menu .dropdown > a {
-    display: inline-flex;
-    align-items: center;
-    vertical-align: middle;
-}
-/* Правильное выравнивание стрелки по центру */
-#horizontal-multilevel-menu .dropdown > a {
-    display: inline-flex !important;
+/* 3. Выстраивание главного уровня меню в горизонтальную линию */
+#navmenu ul#horizontal-multilevel-menu {
+    display: flex !important;
+    flex-direction: row !important;
     align-items: center !important;
-    vertical-align: middle !important;
-    line-height: normal !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 15px !important;
 }
 
-#horizontal-multilevel-menu .dropdown > a::after {
-    content: "▾";
-    font-size: 12px;
-    margin-left: 5px;
-    display: inline-block;
-    vertical-align: middle !important;
-    line-height: 1 !important;
-    position: relative;
-    top: 0 !important;
+/* Контейнеры пунктов меню */
+#navmenu ul#horizontal-multilevel-menu li {
+    position: relative !important;
+    display: block !important;
+}
+
+/* Курсор-палец для всех ссылок меню */
+#navmenu ul#horizontal-multilevel-menu li a {
+    cursor: pointer !important;
+}
+
+/* Ссылки главного уровня */
+#navmenu ul#horizontal-multilevel-menu > li > a {
+    display: block !important;
+    color: var(--nav-color) !important;
+    font-family: var(--nav-font) !important;
+    font-size: 16px !important;
+    padding: 18px 15px !important;
+    text-decoration: none !important;
+    transition: color 0.3s !important;
+}
+
+/* Цвет главных ссылок при наведении — только изменение цвета, без фона */
+#navmenu ul#horizontal-multilevel-menu > li > a:hover,
+#navmenu ul#horizontal-multilevel-menu > li > a.root-item-selected {
+    color: var(--nav-hover-color) !important;
+    background-color: transparent !important;
+}
+
+/* Стрелка у пунктов главного меню с подменю — всегда направлена вниз */
+#navmenu ul#horizontal-multilevel-menu > li:has(> ul) > a::after {
+    content: "\f282" !important;
+    font-family: bootstrap-icons !important;
+    margin-left: 6px !important;
+    font-size: 12px !important;
+    display: inline-block !important;
+}
+
+/* 4. Стилизация выпадающих окон для 2-го уровня — белый с легким оттенком */
+#navmenu ul#horizontal-multilevel-menu li ul {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    z-index: 1000 !important;
+    display: none !important;
+    min-width: 220px !important;
+    padding: 8px 0 !important;
+    margin: 0 !important;
+    list-style: none !important;
+    background-color: #f5f5f5 !important;  /* очень светлый серый */
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+}
+
+/* Стилизация выпадающих окон для 3-го уровня — чуть светлее */
+#navmenu ul#horizontal-multilevel-menu li ul li ul {
+    top: -8px !important;
+    left: 100% !important;
+    background-color: #ffffff !important;  /* полностью белый */
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    box-shadow: none !important;
+}
+
+/* Ссылки в выпадающих меню (2-й уровень) */
+#navmenu ul#horizontal-multilevel-menu li ul li a {
+    display: block !important;
+    padding: 8px 20px !important;
+    color: #333333 !important;
+    font-family: var(--nav-font) !important;
+    font-size: 14px !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    transition: color 0.2s !important;
+    background-color: transparent !important;
+}
+
+/* Ссылки в выпадающих меню (3-й уровень) */
+#navmenu ul#horizontal-multilevel-menu li ul li ul li a {
+    color: #333333 !important;
+}
+
+/* Ховер для выпадающих ссылок — только изменение цвета текста, без фона */
+#navmenu ul#horizontal-multilevel-menu li ul li a:hover {
+    color: var(--nav-hover-color) !important;
+    background-color: transparent !important;
+}
+
+/* Стрелка у пунктов подменю, у которых есть свой подменю — всегда направлена вниз */
+#navmenu ul#horizontal-multilevel-menu li ul li:has(> ul) > a::after {
+    content: "\f282" !important;
+    font-family: bootstrap-icons !important;
+    margin-left: 15px !important;
+    font-size: 12px !important;
+    display: inline-block !important;
+}
+
+/* 5. Логика раскрытия подменю при наведении */
+#navmenu ul#horizontal-multilevel-menu li:hover > ul {
+    display: block !important;
 }

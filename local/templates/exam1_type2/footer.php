@@ -1,19 +1,17 @@
-</main>
+<?
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+IncludeTemplateLangFile(__FILE__);
+?>
 
+</main>
 <footer id="footer" class="footer">
     <div class="copyright">
-        Дашборд: место, где данные обретают смысл.
-    </div>
-    <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        <?=GetMessage("EX_DASHBOARD_TEXT")?>
     </div>
 </footer>
-
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-<script src="/local/templates/exam1_type2/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<script src="/local/templates/exam1_type2/assets/js/main.js"></script>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+</a>
 
 </body>
 </html>

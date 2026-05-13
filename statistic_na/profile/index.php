@@ -1,22 +1,26 @@
-<?php
-define("BX_NO_HEADER", true);
-define("BX_SKIP_SESSION_EXPAND", true);
-define("NO_KEEP_STATISTIC", true);
-define("NOT_CHECK_PERMISSIONS", true);
-define("BX_NO_ACCELERATOR_RESET", true);
-
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
-
-global $APPLICATION;
-global $APPLICATION, $USER;
-$APPLICATION->SetPageProperty("page_css_class", "profile");
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Профиль");
+$templateFolder = "/local/templates/exam1_type2";
+$APPLICATION->SetPageProperty("page_css_class", "profile");
 
-require($_SERVER["DOCUMENT_ROOT"]."/local/templates/exam1_type2/header.php");
+global $USER;
+$userId = $USER->GetID();
+$userLogin = $USER->GetLogin();
+$userFullName = $USER->GetFullName();
+$userEmail = $USER->GetEmail();
+$userFirstName = $USER->GetFirstName();
+$userLastName = $USER->GetLastName();
+
+if (empty($userFullName)) {
+    $userFullName = $userLogin;
+}
+if (empty($userFirstName)) {
+    $userFirstName = $userLogin;
+}
 ?>
 
 <div class="pagetitle mb-4">
-    <h1>Профиль</h1>
+    <h1><?=GetMessage("PROFILE_TITLE")?></h1>
 </div>
 
 <section class="section profile">
@@ -24,9 +28,9 @@ require($_SERVER["DOCUMENT_ROOT"]."/local/templates/exam1_type2/header.php");
         <div class="col-xl-4">
             <div class="card">
                 <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-                    <img src="/local/templates/exam1_type2/assets/img/male_avatar.svg" alt="Profile" class="rounded-circle">
-                    <h2><?=$USER->GetFullName() ?: 'Илья Иванов'?></h2>
-                    <h3>Аналитик</h3>
+                    <img src="<?=$templateFolder?>/assets/img/male_avatar.svg" alt="Profile" class="rounded-circle">
+                    <h2><?=htmlspecialcharsbx($userFullName)?></h2>
+                    <h3><?=GetMessage("PROFILE_ANALYTIC")?></h3>
                     <div class="social-links mt-2">
                         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                         <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -42,114 +46,135 @@ require($_SERVER["DOCUMENT_ROOT"]."/local/templates/exam1_type2/header.php");
                 <div class="card-body pt-3">
                     <ul class="nav nav-tabs nav-tabs-bordered" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview" aria-selected="false" role="tab" tabindex="-1">Обзор</button>
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview"><?=GetMessage("PROFILE_OVERVIEW")?></button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit" aria-selected="true" role="tab">Изменить данные</button>
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit"><?=GetMessage("PROFILE_EDIT")?></button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password" aria-selected="false" role="tab" tabindex="-1">Изменить пароль</button>
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password"><?=GetMessage("PROFILE_CHANGE_PASSWORD")?></button>
                         </li>
                     </ul>
 
                     <div class="tab-content pt-2">
                         <div class="tab-pane fade profile-overview active show" id="profile-overview" role="tabpanel">
-                            <h5 class="card-title">Детали</h5>
+                            <h5 class="card-title"><?=GetMessage("PROFILE_DETAILS")?></h5>
                             <div class="row">
-                                <div class="col-lg-3 col-md-4 label">ФИО</div>
-                                <div class="col-lg-9 col-md-8"><?=$USER->GetFullName() ?: 'Илья Иванов'?></div>
+                                <div class="col-lg-3 col-md-4 label"><?=GetMessage("PROFILE_FULL_NAME")?></div>
+                                <div class="col-lg-9 col-md-8"><?=htmlspecialcharsbx($userFullName)?></div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-3 col-md-4 label">Компания</div>
-                                <div class="col-lg-9 col-md-8">Компания</div>
+                                <div class="col-lg-3 col-md-4 label"><?=GetMessage("PROFILE_LOGIN")?></div>
+                                <div class="col-lg-9 col-md-8"><?=htmlspecialcharsbx($userLogin)?></div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-3 col-md-4 label">Должность</div>
-                                <div class="col-lg-9 col-md-8">Аналитик</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-3 col-md-4 label">Email</div>
-                                <div class="col-lg-9 col-md-8"><?=$USER->GetEmail() ?: 'i.ivanov@bitrix.ru'?></div>
+                                <div class="col-lg-3 col-md-4 label"><?=GetMessage("PROFILE_EMAIL")?></div>
+                                <div class="col-lg-9 col-md-8"><?=htmlspecialcharsbx($userEmail)?></div>
                             </div>
                         </div>
 
                         <div class="tab-pane fade profile-edit pt-3" id="profile-edit" role="tabpanel">
-                            <form>
+                            <form action="<?=$APPLICATION->GetCurPage()?>" method="post">
+                                <input type="hidden" name="save_profile" value="Y">
+                                <?=bitrix_sessid_post()?>
+
                                 <div class="row mb-3">
-                                    <label for="avatar" class="col-md-4 col-lg-3 col-form-label">Аватар</label>
+                                    <label for="NAME" class="col-md-4 col-lg-3 col-form-label"><?=GetMessage("PROFILE_NAME")?></label>
                                     <div class="col-md-8 col-lg-9">
-                                        <input name="Avatar" type="file" class="form-control" id="avatar">
+                                        <input name="NAME" type="text" class="form-control" id="NAME" value="<?=htmlspecialcharsbx($userFirstName)?>">
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="firstName" class="col-md-4 col-lg-3 col-form-label">Имя</label>
+                                    <label for="LAST_NAME" class="col-md-4 col-lg-3 col-form-label"><?=GetMessage("PROFILE_LAST_NAME")?></label>
                                     <div class="col-md-8 col-lg-9">
-                                        <input name="FirstName" type="text" class="form-control" id="firstName" value="Илья">
+                                        <input name="LAST_NAME" type="text" class="form-control" id="LAST_NAME" value="<?=htmlspecialcharsbx($userLastName)?>">
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="lastName" class="col-md-4 col-lg-3 col-form-label">Фамилия</label>
+                                    <label for="EMAIL" class="col-md-4 col-lg-3 col-form-label">Email</label>
                                     <div class="col-md-8 col-lg-9">
-                                        <input name="LastName" type="text" class="form-control" id="lastName" value="Иванов">
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <label for="company" class="col-md-4 col-lg-3 col-form-label">Компания</label>
-                                    <div class="col-md-8 col-lg-9">
-                                        <input name="company" type="text" class="form-control" id="company" value="Компания">
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <label for="job" class="col-md-4 col-lg-3 col-form-label">Должность</label>
-                                    <div class="col-md-8 col-lg-9">
-                                        <input name="job" type="text" class="form-control" id="job" value="Аналитик">
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
-                                    <div class="col-md-8 col-lg-9">
-                                        <input name="email" type="email" class="form-control" id="email" value="i.ivanov@bitrix.ru">
+                                        <input name="EMAIL" type="email" class="form-control" id="EMAIL" value="<?=htmlspecialcharsbx($userEmail)?>">
                                     </div>
                                 </div>
 
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-secondary">Обновить</button>
+                                    <button type="submit" class="btn btn-secondary"><?=GetMessage("PROFILE_SAVE")?></button>
                                 </div>
                             </form>
+
+                            <?php
+
+                            if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["save_profile"] == "Y" && check_bitrix_sessid()) {
+                                $arFields = array(
+                                    "NAME" => $_POST["NAME"],
+                                    "LAST_NAME" => $_POST["LAST_NAME"],
+                                    "EMAIL" => $_POST["EMAIL"],
+                                );
+                                $user = new CUser;
+                                $res = $user->Update($userId, $arFields);
+                                if ($res) {
+                                    LocalRedirect($APPLICATION->GetCurPage());
+                                }
+                            }
+                            ?>
                         </div>
 
                         <div class="tab-pane fade pt-3" id="profile-change-password" role="tabpanel">
-                            <form>
+                            <form action="<?=$APPLICATION->GetCurPage()?>" method="post">
+                                <input type="hidden" name="change_password" value="Y">
+                                <?=bitrix_sessid_post()?>
+
                                 <div class="row mb-3">
-                                    <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Текущий пароль</label>
+                                    <label for="old_password" class="col-md-4 col-lg-3 col-form-label"><?=GetMessage("PROFILE_OLD_PASSWORD")?></label>
                                     <div class="col-md-8 col-lg-9">
-                                        <input name="password" type="password" class="form-control" id="currentPassword">
+                                        <input name="OLD_PASSWORD" type="password" class="form-control" id="old_password">
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">Новый пароль</label>
+                                    <label for="new_password" class="col-md-4 col-lg-3 col-form-label"><?=GetMessage("PROFILE_NEW_PASSWORD")?></label>
                                     <div class="col-md-8 col-lg-9">
-                                        <input name="newpassword" type="password" class="form-control" id="newPassword">
+                                        <input name="NEW_PASSWORD" type="password" class="form-control" id="new_password">
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Повторите новый пароль</label>
+                                    <label for="confirm_password" class="col-md-4 col-lg-3 col-form-label"><?=GetMessage("PROFILE_CONFIRM_PASSWORD")?></label>
                                     <div class="col-md-8 col-lg-9">
-                                        <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+                                        <input name="NEW_PASSWORD_CONFIRM" type="password" class="form-control" id="confirm_password">
                                     </div>
                                 </div>
 
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-secondary">Изменить пароль</button>
+                                    <button type="submit" class="btn btn-secondary"><?=GetMessage("PROFILE_CHANGE")?></button>
                                 </div>
                             </form>
+
+                            <?php
+                            if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["change_password"] == "Y" && check_bitrix_sessid()) {
+                                $oldPassword = $_POST["OLD_PASSWORD"];
+                                $newPassword = $_POST["NEW_PASSWORD"];
+                                $confirmPassword = $_POST["NEW_PASSWORD_CONFIRM"];
+                                
+                                if ($newPassword !== $confirmPassword) {
+                                    echo '<div class="alert alert-danger">' . GetMessage("PROFILE_PASSWORD_MISMATCH") . '</div>';
+                                } else {
+                                    $user = new CUser;
+                                    $arFields = array(
+                                        "PASSWORD" => $newPassword,
+                                        "CONFIRM_PASSWORD" => $confirmPassword,
+                                    );
+                                    $res = $user->Update($userId, $arFields);
+                                    if ($res) {
+                                        echo '<div class="alert alert-success">' . GetMessage("PROFILE_PASSWORD_CHANGED") . '</div>';
+                                    } else {
+                                        echo '<div class="alert alert-danger">' . $user->LAST_ERROR . '</div>';
+                                    }
+                                }
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -158,6 +183,4 @@ require($_SERVER["DOCUMENT_ROOT"]."/local/templates/exam1_type2/header.php");
     </div>
 </section>
 
-<?php
-require($_SERVER["DOCUMENT_ROOT"]."/local/templates/exam1_type2/footer.php");
-?>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
